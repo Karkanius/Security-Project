@@ -1,0 +1,5 @@
+tinyec
+cryptography==2.8
+pycryptodome==3.9.4
+PyKCS11==1.5.7
+pyOpenSSL==19.1.0

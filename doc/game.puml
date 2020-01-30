@@ -1,0 +1,56 @@
+@startuml
+autonumber
+
+group Handshake
+Client -> Server: Handshake with name
+Server --> Client: Handshake response
+end
+
+Client -> Server: Diffie-Hellman exchange
+Server -> Client: Diffie-Hellman exchange
+
+group Join Game
+Client -> Server: TableCreationRequest/TableJoinRequest
+Server -> Client: Info about table
+end
+
+Client -> Server: Diffie-Hellman exchange
+Server -> Client: Diffie-Hellman exchange
+
+group Start Game
+Server -> Client: Game can start?
+Client -> Server: Yes
+end
+
+group Deck Secure Distribution
+Server -> Client: Deck
+Client -> Server: Shuffled deck
+
+Client -> Client: Information about other players
+Client -> Client: Diffie-Hellman exchange
+
+Client -> Client: Pass deck and shuffle/exchange/remove cards
+Client -> Server: Send signed hand
+Client -> Client: Send public key to other players
+
+end
+
+group play
+Client -> Server: Card to play
+Server -> Client: Next player
+end
+
+group Protest against cheating
+Server -> Client: Do you want to protest?
+Client -> Server: Yes/No
+group Yes
+Server -> Client: Show hand
+hnote over Client : Shows hand
+end
+end
+
+group Accountability
+Server -> Client: Scores and Game Info
+hnote over Client : Sign+save info
+end
+@enduml

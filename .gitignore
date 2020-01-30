@@ -1,0 +1,10 @@
+
+.idea/
+
+*.pyc
+
+slots/
+
+accounting/
+
+.directory
